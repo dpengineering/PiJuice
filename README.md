@@ -9,6 +9,7 @@ Next, open up PiJuice Settings. It can be found in the Start Menu under prefrenc
 On the HAT tab click "Configure hat".
 Make sure the "GPIO Input Enabled" and the "Charging Enabled" boxes are checked.
 
+Go to the System Task tab and check the box next to "System task enabled"
 
 Go to the System Events tab and click the "No Power" event box and use the dropdown menu to select 'USER_FUNC1' like Picture2 in screenshots
 
