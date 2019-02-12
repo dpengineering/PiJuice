@@ -18,5 +18,6 @@ pj.power.SetSystemPowerSwitch(0)
 # Remove 5V power to RPi after 20 seconds
 #Wait for the timer to finish before restarting the board
 pj.power.SetPowerOff(20)
+pj.power.SetWakeUpOnCharge(0)
 # Shut down the RPi
 call("sudo shutdown -h now", shell=True)
