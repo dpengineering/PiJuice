@@ -46,9 +46,13 @@
     "min_charge": {
       "threshold": ""
     }, 
-    "enabled": true, 
+    "ext_halt_power_off": {
+      "enabled": true,
+      "period": "30"
+    },
     "wakeup_on_charge": {
       "trigger_level": ""
-    }
+    },
+    "enabled": true
   }
 }
