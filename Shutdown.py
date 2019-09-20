@@ -5,7 +5,7 @@ from pijuice import PiJuice
 
 pj = PiJuice(bus=1, address=0x14)
 
-pj.status.SetLedBlink(led='D2', count=3, rgb1=[0, 0, 200], period1=1000, rgb2=[200, 0, 0], period2=1000)
+pj.status.SetLedBlink(led='D2', count=3, rgb1=[0, 0, 200], ssperiod1=1000, rgb2=[200, 0, 0], period2=1000)
 
 # Remove power to PiJuice MCU IO pins
 pj.power.SetSystemPowerSwitch(0)
