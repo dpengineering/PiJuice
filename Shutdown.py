@@ -2,21 +2,17 @@
 
 import os
 from pijuice import PiJuice
-import logging
-from subprocess import call
-import time
 
-pj = PiJuice(1, 0x14)
+pj = PiJuice(bus=1, address=0x14)
 
+pj.status.SetLedBlink(led='D2', count=3, rgb1=[0, 0, 200], period1=1000, rgb2=[200, 0, 0], period2=1000)
 
-pj.status.SetLedBlink('D2',3, [0,0,200],1000, [200,0,0], 1000)
-
-#Wait before beginning shutdown process(8 seconds)
-time.sleep(8)
 # Remove power to PiJuice MCU IO pins
 pj.power.SetSystemPowerSwitch(0)
-# Remove 5V power to RPi after 20 seconds
-#Wait for the timer to finish before restarting the board
-pj.power.SetPowerOff(20)
+
+# Remove 5V power to RPi after 60 seconds
+# Wait for the timer to finish before restarting the board
+pj.power.SetPowerOff(delay=60)
+
 # Shut down the RPi
-call("sudo shutdown -h now", shell=True)
+os.system('sudo shutdown now')
