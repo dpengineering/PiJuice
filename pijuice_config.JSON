@@ -1,58 +1,69 @@
 {
+  "user_functions": {
+    "USER_FUNC6": "",
+    "USER_FUNC3": "",
+    "USER_FUNC15": "",
+    "USER_FUNC13": "",
+    "USER_FUNC4": "",
+    "USER_FUNC5": "",
+    "USER_FUNC1": "/home/pi/packages/PiJuice/Shutdown.py",
+    "USER_FUNC2": "",
+    "USER_FUNC14": "",
+    "USER_FUNC9": "",
+    "USER_FUNC8": "",
+    "USER_FUNC10": "",
+    "USER_FUNC11": "",
+    "USER_FUNC12": "",
+    "USER_FUNC7": ""
+  },
   "system_events": {
+    "low_charge": {
+      "function": "NO_FUNC",
+      "enabled": false
+    },
     "no_power": {
-      "function": "USER_FUNC1", 
+      "function": "USER_FUNC1",
       "enabled": true
-    }, 
-    "button_power_off": {
-      "enabled": false
-    }, 
-    "forced_sys_power_off": {
-      "enabled": false
-    }, 
+    },
     "forced_power_off": {
-      "enabled": false
-    }, 
+      "function": "USER_FUNC1",
+      "enabled": true
+    },
     "watchdog_reset": {
-      "function": "USER_FUNC1", 
+      "function": "USER_FUNC1",
+      "enabled": false
+    },
+    "button_power_off": {
+      "function": "NO_FUNC",
+      "enabled": false
+    },
+    "forced_sys_power_off": {
+      "function": "NO_FUNC",
+      "enabled": false
+    },
+    "low_battery_voltage": {
+      "function": "NO_FUNC",
       "enabled": false
     }
-  }, 
-  "user_functions": {
-    "USER_FUNC8": "", 
-    "USER_FUNC9": "", 
-    "USER_FUNC1": "/etc/PiJuice/Shutdown.py", 
-    "USER_FUNC2": "", 
-    "USER_FUNC3": "", 
-    "USER_FUNC4": "", 
-    "USER_FUNC5": "", 
-    "USER_FUNC6": "", 
-    "USER_FUNC7": "", 
-    "USER_FUNC12": "", 
-    "USER_FUNC13": "", 
-    "USER_FUNC10": "", 
-    "USER_FUNC11": "", 
-    "USER_FUNC14": "", 
-    "USER_FUNC15": ""
-  }, 
+  },
   "system_task": {
-    "watchdog": {
-      "enabled": false, 
-      "period": "2"
-    }, 
-    "min_bat_voltage": {
-      "threshold": ""
-    }, 
+    "enabled": true,
+    "ext_halt_power_off": {
+      "period": "30",
+      "enabled": true
+    },
     "min_charge": {
       "threshold": ""
-    }, 
-    "ext_halt_power_off": {
-      "enabled": true,
-      "period": "30"
+    },
+    "min_bat_voltage": {
+      "threshold": ""
+    },
+    "watchdog": {
+      "period": "2",
+      "enabled": false
     },
     "wakeup_on_charge": {
       "trigger_level": ""
-    },
-    "enabled": true
+    }
   }
 }

@@ -1,29 +1,32 @@
-# PiJuice
+# Configuring the PiJuice
 
-To get PiJuice installed, run this command in Termit:
+To install the PiJuice and have the correct functionality please follow the steps outlined below. The process entails installing the PiJuice 
+python package, installing the correct settings and specifying the shutdown script.
 
-sudo apt-get install pijuice-gui
+## Install PiJuice dependencies 
+We will install the command line version of PiJuice by running ```sudo apt-get install pijuice-base```
 
-Next, open up PiJuice Settings. It can be found in the Start Menu under prefrences. It should open a window similar to Picture1 in screenshots.
+Make sure you have this repository cloned into the directory `````/home/pi/packages/PiJuice`````. This is necessary as the user script is defined to be run in this location
 
-On the HAT tab click "Configure hat".
-Make sure the "GPIO Input Enabled" and the "Charging Enabled" boxes are checked.
+## Install JSON Settings File
+Run all of the following commands from the home directory (/home/pi) with sudo
 
-Go to the System Task tab and check the box next to "System task enabled"
+* We need to copy our pijuice settings file to the pi do this by first making a backup of the current settings: ```sudo mv /var/lib/pijuice/pijuice_config.JSON /var/lib/pijuice/pijuice_config.JSON.old```
+* Now copy the new settings in  ```sudo cp /home/pi/packages/PiJuice/pijuice_config.JSON /var/lib/pijuice/pijuice_config.JSON```
 
-Go to the System Events tab and click the "No Power" event box and use the dropdown menu to select 'USER_FUNC1' like Picture2 in screenshots
-
-Next, head over to the 'User Scripts' section and use the '...' button to select the path to Shutdown.py for 'USER_FUNC1'. 
-
-Finally we need to run a command to copy the pijuice.py python package to the pyhton3 packages. otherwise our shutdown script will not run.
-
-NOTE: This must be run from the root directory not the pi directory. so when you open up termit type ```cd ../../```
-
-```
-sudo cp /usr/lib/python2.7/dist-packages/pijuice.py /usr/lib/python3/dist-packages/pijuice.py
-```
-
-When the battery is unplugged from a power source, the LEDs on pin D2 should blink red and blue, signifying the beginning of the shutdown process. The Raspberry Pi will then turn off, and 20 seconds later, the battery will turn off as well. These numbers are adjustable in the code(See Shutdown.py).
+* Change the permissions so pijuice can read the file ```sudo chown pijuice /var/lib/pijuice/pijuice_config.JSON``` and ```sudo chmod 777 /var/lib/pijuice/pijuice_config.JSON```
 
 
-When hooking up the PiJuice to a project plug the power supply into the raspberry pi. This will ensure that the pi boots when it receives power. If the Power is plugged into the piJuice it will require a button to be pressed to boot the PI. 
+## Make Shutdown.py Executable
+The Shutdown.py in this repository is responsible for shutting the pi down. Please leave the this file in /home/pi/packages/PiJuice/
+as the settings file looks Shutdown.py in that file path. 
+
+The file needs to be executable so run ```chmod +x /home/pi/packages/PiJuice/Shutdown.py```
+
+## Reboot
+Reboot the Pi to ensure the settings take effect.
+
+## Debugging
+The PiJuice service needs to be running in order for the PiJuice to function correctly. To ensure the service is running run ```systemctl status pijuice.service```
+
+Shutdown.py was modeled off this [github issue answer](https://github.com/PiSupply/PiJuice/issues/159) as well as [this github issue.](https://github.com/PiSupply/PiJuice/issues/309)
