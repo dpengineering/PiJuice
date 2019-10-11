@@ -1,7 +1,8 @@
 # Configuring the PiJuice
 
-To install the PiJuice and have the correct functionality please follow the steps outlined below. The process entails installing the PiJuice 
-python package, installing the correct settings and specifying the shutdown script.
+To install the PiJuice and have the correct functionality please follow the steps outlined below. The process entails installing the PiJuice python package, installing the correct settings and specifying the shutdown script.
+
+Please ensure the PiJuice is running a firmware version greater than 1.2, please refer to [the docs](https://github.com/PiSupply/PiJuice/tree/master/Firmware) on updating the firmware.
 
 ## Automated Installation
 You can automate the entire install process by running the install script from this directory, ```sudo sh ./install.sh``` followed
@@ -34,6 +35,8 @@ The file needs to be executable so run ```chmod +x /home/pi/packages/PiJuice/Shu
 Reboot the Pi to ensure the settings take effect.
 
 ## Debugging
+**PiJuice running firmware version 1.2 has proven to not work nicely with our intended use case. Please ensure the PiJuice is running a firmware version greater than 1.2!** Please refer to [the docs](https://github.com/PiSupply/PiJuice/tree/master/Firmware) on updating the firmware.
+
 The PiJuice service needs to be running in order for the PiJuice to function correctly. To ensure the service is running run ```systemctl status pijuice.service```
 
 Shutdown.py was modeled off this [github issue answer](https://github.com/PiSupply/PiJuice/issues/159) as well as [this github answer.](https://github.com/PiSupply/PiJuice/issues/309)
